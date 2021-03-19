@@ -13,4 +13,4 @@
 
 ## Running the project
 - Just type:
-    ```python random_numbers.py```
+    ```python randomnumbers.py```
