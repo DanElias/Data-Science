@@ -2,14 +2,6 @@
 Author: Daniel Elias
 Date: June 2021
 Simulation of a battle between antagonist groups using Markov Chains and the Monte Carlo method.
-
-User can:
-1) Create his/her own N X N matrix
-2) Check that the created matrix is a stochastic matrix (if not, the user must enter the matrix again)
-3) Calculate the probability from going to one state to another in n steps. (Your program must show every power of the matrix until it reaches the number of steps)
-4) Calculate the long-term state (steady) of the matrix. Indicate the minimum needed value for the power (if there is no steady state notify the user)
-5) Identify if the matrix is regular or not.
-6) Create automatically a 3 X 3 random stochastic matrix and let the user use steps 3, 4 and 5. (Each time you execute your program, the matrix must be different).
 """
 
 import math
