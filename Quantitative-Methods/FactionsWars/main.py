@@ -30,6 +30,8 @@ class WarSimulation:
         self.factions = []
         self.total_warriors = 0
         self.intervals = []
+        self.factions_positions = dict()
+        self.result = ""
         
         self._run()
     
@@ -43,7 +45,7 @@ class WarSimulation:
         while not close:
             print("\nLet's begin our war simulation... Do you want to:")
             print("a) Input your own matrix")
-            print("b) Use a random 3 x 3 matrix")
+            print("b) Use a random n x n matrix")
             print("c) Exit the program")
             choice = input("Type the letter of your choice:")
             if choice == 'a':
@@ -51,15 +53,14 @@ class WarSimulation:
                 self._load_matrix()
                 print("Now checking your matrix ...")
                 self._check_matrix()
-                print("Great! Your matrix is Stochastic ...")
                 input("\nPress ENTER to continue")
                 self._menu()
             elif choice == 'b':
-                print("\nNow creating a 3 x 3 Random Stochastic Matrix")
-                self._generate_random_stochastic_matrix()
+                n = input("Give the width of the matrix which is the number of factions:  ")
+                print("\nNow creating a n x n Random Stochastic Matrix")
+                self._generate_random_stochastic_matrix(int(n))
                 print("Checking the matrix ...")
                 self._check_matrix()
-                print("Great! The matrix is Stochastic ...")
                 input("\nPress ENTER to continue")
                 self._menu()
             elif choice == 'c':
@@ -86,6 +87,10 @@ class WarSimulation:
             choice = input("Type the letter of your choice:")
             if choice == 'a':
                 self._war()
+                with open ("output.txt", "w") as output:
+                    output.write(self.result)
+                self.result = ""
+                self.factions_positions = dict()
                 input("Press ENTER to continue")
                 close = True
             elif choice == 'b':
@@ -98,32 +103,109 @@ class WarSimulation:
                 print("Invalid option, choose an option")
                 input("Press ENTER to continue")
 
+    def _print_factions(self):
+        for i in range(len(self.factions_positions)):
+            if -1 == self.factions_positions[i]:
+                print("Faction " + str(i) + " has 0 warriors")
+                self.result += "\nFaction " + str(i) + " has 0 warriors"
+            else:
+                print("Faction " + str(i) + " has " + str(self.factions[self.factions_positions[i]]) + " warriors")
+                self.result += "\nFaction " + str(i) + " has " + str(self.factions[self.factions_positions[i]]) + " warriors"
+
     def _war(self):
+        print(self.matrix)
+        self.result += "\n" + str(self.matrix)
+        self._print_factions()
         while self.number_of_factions > 1:
             attacker = random.randint(0, self.number_of_factions - 1)
             attacked = 0
             attacker_intervals = self.intervals[attacker]
             random_probability = random.random()
             for index, row in attacker_intervals.iterrows():
-                # if the probability is in the interval
+
+                # if the probability is in the interval (monte carlo)
                 if random_probability >= row["inferior"] and random_probability < row["superior"]:
                     attacked = index
-                    if self.factions[attacked] > 0:
-                        self.factions[attacked] -= 1
-                        print(self.factions)
-                        if self.factions[attacked] == 0:
-                            #reconfigure the markov chain and the intervals (monte carlo)
-                            print("Reconfigure")
-                            self.number_of_factions -= 1
-            
 
+                    if self.factions[attacked] > 0:
+
+                        # perform the attack
+                        self.factions[attacked] -= 1
+                        for i in range(len(self.factions_positions)):
+                            if attacked == self.factions_positions[i]:
+                                print("Faction " + str(i) + " was attacked")
+                                self.result += "\nFaction " + str(i) + " was attacked"
+                            if attacker == self.factions_positions[i]:
+                                print("Faction " + str(i) + " attacked")
+                                self.result += "\nFaction " + str(i) + " attacked"
+                        # print the remaining warriors for each faction
+                        self._print_factions()
+                        
+                        # Check if attacked faction died
+                        if self.factions[attacked] == 0:
+
+                            #reconfigure the markov chain and the intervals (monte carlo)
+                            print("*A faction was defeated*")
+                            self.result += "\n*A faction was defeated*"
+                            
+                            # reduce number of factions
+                            self.number_of_factions -= 1
+
+                            for i in range(len(self.factions_positions)):
+                                # Remove attacked from factions list
+                                if attacked == self.factions_positions[i]:
+                                    print("Faction " + str(i) + " was defeated!!!")
+                                    self.result += "\nFaction " + str(i) + " was defeated!!!"
+                                    self.factions.pop(attacked)
+                                    self.factions_positions[i] = -1
+                                # move the other remaining factions one space in the factions list
+                                if attacked < self.factions_positions[i]:
+                                    self.factions_positions[i] -= 1
+                            
+                            # See if only one faction is remaining
+                            if self.number_of_factions == 1:
+                                # Print who was the winner
+                                for i in range(len(self.factions_positions)):
+                                    if 0 == self.factions_positions[i]:
+                                        print("Faction " + str(i) + " has " + str(self.factions[0]) + " remaining warriors and is the WINNER!!!")
+                                        self.result += "\nFaction " + str(i) + " has " + str(self.factions[0]) + " remaining warriors and is the WINNER!!!"
+                                        i = len(self.factions_positions)
+                                print("The war has ended... Peace & Love!")
+                                self.result += "\n\nThe war has ended... Peace & Love!"
+                                # reconfigure stochastic matrix rows/cols to the number of remaining factions
+                            else:
+                                print("*Reconfiguring the war...*")
+                                self.result += "\n\n*Reconfiguring the war...*"
+                                self._reconfigure()
+                                self.result += "\n" + str(self.matrix)
+                                
+                        
+                            
+            
+    def _reconfigure(self):
+        print("Reconfiguring the matrix...")
+        self._generate_random_stochastic_matrix(self.number_of_factions)
+        print(self.matrix)
+        print("Checking the matrix...")
+        self._check_matrix()
+        self._initialize_intervals()
+        print("Continuing with the war...")
     
-    def _generate_random_stochastic_matrix(self):
+    def _generate_random_stochastic_matrix(self, n):
         """
-        Generates a random 3 x 3 stochastic matrix
+        Generates a random n x n stochastic matrix
         """
-        matrix = np.random.rand(3,3)
+        matrix = np.random.rand(n,n)
         self.matrix = matrix / matrix.sum(axis=1)[:,None]
+        # Set diagonal to zeroes and add the diagonal num to rest of columns in row to keep stochastic
+        for i in range(len(self.matrix)):
+            divided_diagonal = self.matrix[i][i] / (len(self.matrix) - 1)
+            for j in range(len(self.matrix)):
+                if i == j:
+                    self.matrix[i][j] = 0
+                else:
+                    self.matrix[i][j] += divided_diagonal
+
 
     def _initialize_factions(self):
         self.factions = []
@@ -173,6 +255,7 @@ class WarSimulation:
     def _input_faction_numbers(self):
         self.number_of_factions = len(self.matrix)
         for i in range(self.number_of_factions):
+            self.factions_positions[i] = i
             number_per_faction = input("Input number of individuals for faction " + str((i + 1)) + ": ")
             self.total_warriors += int(number_per_faction)
             self.factions.append(number_per_faction)
@@ -180,6 +263,7 @@ class WarSimulation:
     def _random_faction_numbers(self):
         self.number_of_factions = len(self.matrix)
         for i in range(self.number_of_factions):
+            self.factions_positions[i] = i
             number_per_faction = random.randint(10, 100)
             self.factions.append(number_per_faction)
             self.total_warriors += number_per_faction
@@ -272,6 +356,7 @@ class WarSimulation:
                 print("Your matrix is not stochastic. Each row should add up to 1")
                 print("\nNow exiting program ...")
                 exit()
+        print("Great! Your matrix is Stochastic ...")
         
     def _trunc(self, x):
         """

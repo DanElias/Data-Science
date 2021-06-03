@@ -1,0 +1,413 @@
+
+[[0.       0.35451  0.64549 ]
+ [0.687795 0.       0.312205]
+ [0.184366 0.815634 0.      ]]
+Faction 0 has 66 warriors
+Faction 1 has 22 warriors
+Faction 2 has 29 warriors
+Faction 0 was attacked
+Faction 1 attacked
+Faction 0 has 65 warriors
+Faction 1 has 22 warriors
+Faction 2 has 29 warriors
+Faction 0 attacked
+Faction 2 was attacked
+Faction 0 has 65 warriors
+Faction 1 has 22 warriors
+Faction 2 has 28 warriors
+Faction 0 was attacked
+Faction 1 attacked
+Faction 0 has 64 warriors
+Faction 1 has 22 warriors
+Faction 2 has 28 warriors
+Faction 0 attacked
+Faction 2 was attacked
+Faction 0 has 64 warriors
+Faction 1 has 22 warriors
+Faction 2 has 27 warriors
+Faction 0 attacked
+Faction 2 was attacked
+Faction 0 has 64 warriors
+Faction 1 has 22 warriors
+Faction 2 has 26 warriors
+Faction 1 was attacked
+Faction 2 attacked
+Faction 0 has 64 warriors
+Faction 1 has 21 warriors
+Faction 2 has 26 warriors
+Faction 1 was attacked
+Faction 2 attacked
+Faction 0 has 64 warriors
+Faction 1 has 20 warriors
+Faction 2 has 26 warriors
+Faction 0 attacked
+Faction 1 was attacked
+Faction 0 has 64 warriors
+Faction 1 has 19 warriors
+Faction 2 has 26 warriors
+Faction 0 was attacked
+Faction 1 attacked
+Faction 0 has 63 warriors
+Faction 1 has 19 warriors
+Faction 2 has 26 warriors
+Faction 0 attacked
+Faction 2 was attacked
+Faction 0 has 63 warriors
+Faction 1 has 19 warriors
+Faction 2 has 25 warriors
+Faction 0 was attacked
+Faction 1 attacked
+Faction 0 has 62 warriors
+Faction 1 has 19 warriors
+Faction 2 has 25 warriors
+Faction 0 attacked
+Faction 1 was attacked
+Faction 0 has 62 warriors
+Faction 1 has 18 warriors
+Faction 2 has 25 warriors
+Faction 1 was attacked
+Faction 2 attacked
+Faction 0 has 62 warriors
+Faction 1 has 17 warriors
+Faction 2 has 25 warriors
+Faction 1 attacked
+Faction 2 was attacked
+Faction 0 has 62 warriors
+Faction 1 has 17 warriors
+Faction 2 has 24 warriors
+Faction 0 was attacked
+Faction 2 attacked
+Faction 0 has 61 warriors
+Faction 1 has 17 warriors
+Faction 2 has 24 warriors
+Faction 1 was attacked
+Faction 2 attacked
+Faction 0 has 61 warriors
+Faction 1 has 16 warriors
+Faction 2 has 24 warriors
+Faction 1 was attacked
+Faction 2 attacked
+Faction 0 has 61 warriors
+Faction 1 has 15 warriors
+Faction 2 has 24 warriors
+Faction 0 was attacked
+Faction 1 attacked
+Faction 0 has 60 warriors
+Faction 1 has 15 warriors
+Faction 2 has 24 warriors
+Faction 1 was attacked
+Faction 2 attacked
+Faction 0 has 60 warriors
+Faction 1 has 14 warriors
+Faction 2 has 24 warriors
+Faction 1 was attacked
+Faction 2 attacked
+Faction 0 has 60 warriors
+Faction 1 has 13 warriors
+Faction 2 has 24 warriors
+Faction 1 was attacked
+Faction 2 attacked
+Faction 0 has 60 warriors
+Faction 1 has 12 warriors
+Faction 2 has 24 warriors
+Faction 1 was attacked
+Faction 2 attacked
+Faction 0 has 60 warriors
+Faction 1 has 11 warriors
+Faction 2 has 24 warriors
+Faction 0 attacked
+Faction 1 was attacked
+Faction 0 has 60 warriors
+Faction 1 has 10 warriors
+Faction 2 has 24 warriors
+Faction 1 was attacked
+Faction 2 attacked
+Faction 0 has 60 warriors
+Faction 1 has 9 warriors
+Faction 2 has 24 warriors
+Faction 0 was attacked
+Faction 2 attacked
+Faction 0 has 59 warriors
+Faction 1 has 9 warriors
+Faction 2 has 24 warriors
+Faction 1 was attacked
+Faction 2 attacked
+Faction 0 has 59 warriors
+Faction 1 has 8 warriors
+Faction 2 has 24 warriors
+Faction 1 was attacked
+Faction 2 attacked
+Faction 0 has 59 warriors
+Faction 1 has 7 warriors
+Faction 2 has 24 warriors
+Faction 0 attacked
+Faction 2 was attacked
+Faction 0 has 59 warriors
+Faction 1 has 7 warriors
+Faction 2 has 23 warriors
+Faction 0 was attacked
+Faction 2 attacked
+Faction 0 has 58 warriors
+Faction 1 has 7 warriors
+Faction 2 has 23 warriors
+Faction 0 was attacked
+Faction 1 attacked
+Faction 0 has 57 warriors
+Faction 1 has 7 warriors
+Faction 2 has 23 warriors
+Faction 0 was attacked
+Faction 1 attacked
+Faction 0 has 56 warriors
+Faction 1 has 7 warriors
+Faction 2 has 23 warriors
+Faction 0 attacked
+Faction 1 was attacked
+Faction 0 has 56 warriors
+Faction 1 has 6 warriors
+Faction 2 has 23 warriors
+Faction 1 attacked
+Faction 2 was attacked
+Faction 0 has 56 warriors
+Faction 1 has 6 warriors
+Faction 2 has 22 warriors
+Faction 1 was attacked
+Faction 2 attacked
+Faction 0 has 56 warriors
+Faction 1 has 5 warriors
+Faction 2 has 22 warriors
+Faction 0 was attacked
+Faction 2 attacked
+Faction 0 has 55 warriors
+Faction 1 has 5 warriors
+Faction 2 has 22 warriors
+Faction 0 attacked
+Faction 2 was attacked
+Faction 0 has 55 warriors
+Faction 1 has 5 warriors
+Faction 2 has 21 warriors
+Faction 0 attacked
+Faction 1 was attacked
+Faction 0 has 55 warriors
+Faction 1 has 4 warriors
+Faction 2 has 21 warriors
+Faction 0 attacked
+Faction 1 was attacked
+Faction 0 has 55 warriors
+Faction 1 has 3 warriors
+Faction 2 has 21 warriors
+Faction 0 attacked
+Faction 2 was attacked
+Faction 0 has 55 warriors
+Faction 1 has 3 warriors
+Faction 2 has 20 warriors
+Faction 1 was attacked
+Faction 2 attacked
+Faction 0 has 55 warriors
+Faction 1 has 2 warriors
+Faction 2 has 20 warriors
+Faction 0 was attacked
+Faction 1 attacked
+Faction 0 has 54 warriors
+Faction 1 has 2 warriors
+Faction 2 has 20 warriors
+Faction 1 was attacked
+Faction 2 attacked
+Faction 0 has 54 warriors
+Faction 1 has 1 warriors
+Faction 2 has 20 warriors
+Faction 1 was attacked
+Faction 2 attacked
+Faction 0 has 54 warriors
+Faction 1 has 0 warriors
+Faction 2 has 20 warriors
+*A faction was defeated*
+Faction 1 was defeated!!!
+
+*Reconfiguring the war...*
+[[0. 1.]
+ [1. 0.]]
+Faction 0 attacked
+Faction 2 was attacked
+Faction 0 has 54 warriors
+Faction 1 has 0 warriors
+Faction 2 has 19 warriors
+Faction 0 attacked
+Faction 2 was attacked
+Faction 0 has 54 warriors
+Faction 1 has 0 warriors
+Faction 2 has 18 warriors
+Faction 0 attacked
+Faction 2 was attacked
+Faction 0 has 54 warriors
+Faction 1 has 0 warriors
+Faction 2 has 17 warriors
+Faction 0 was attacked
+Faction 2 attacked
+Faction 0 has 53 warriors
+Faction 1 has 0 warriors
+Faction 2 has 17 warriors
+Faction 0 was attacked
+Faction 2 attacked
+Faction 0 has 52 warriors
+Faction 1 has 0 warriors
+Faction 2 has 17 warriors
+Faction 0 was attacked
+Faction 2 attacked
+Faction 0 has 51 warriors
+Faction 1 has 0 warriors
+Faction 2 has 17 warriors
+Faction 0 was attacked
+Faction 2 attacked
+Faction 0 has 50 warriors
+Faction 1 has 0 warriors
+Faction 2 has 17 warriors
+Faction 0 attacked
+Faction 2 was attacked
+Faction 0 has 50 warriors
+Faction 1 has 0 warriors
+Faction 2 has 16 warriors
+Faction 0 was attacked
+Faction 2 attacked
+Faction 0 has 49 warriors
+Faction 1 has 0 warriors
+Faction 2 has 16 warriors
+Faction 0 was attacked
+Faction 2 attacked
+Faction 0 has 48 warriors
+Faction 1 has 0 warriors
+Faction 2 has 16 warriors
+Faction 0 attacked
+Faction 2 was attacked
+Faction 0 has 48 warriors
+Faction 1 has 0 warriors
+Faction 2 has 15 warriors
+Faction 0 attacked
+Faction 2 was attacked
+Faction 0 has 48 warriors
+Faction 1 has 0 warriors
+Faction 2 has 14 warriors
+Faction 0 attacked
+Faction 2 was attacked
+Faction 0 has 48 warriors
+Faction 1 has 0 warriors
+Faction 2 has 13 warriors
+Faction 0 attacked
+Faction 2 was attacked
+Faction 0 has 48 warriors
+Faction 1 has 0 warriors
+Faction 2 has 12 warriors
+Faction 0 was attacked
+Faction 2 attacked
+Faction 0 has 47 warriors
+Faction 1 has 0 warriors
+Faction 2 has 12 warriors
+Faction 0 was attacked
+Faction 2 attacked
+Faction 0 has 46 warriors
+Faction 1 has 0 warriors
+Faction 2 has 12 warriors
+Faction 0 attacked
+Faction 2 was attacked
+Faction 0 has 46 warriors
+Faction 1 has 0 warriors
+Faction 2 has 11 warriors
+Faction 0 was attacked
+Faction 2 attacked
+Faction 0 has 45 warriors
+Faction 1 has 0 warriors
+Faction 2 has 11 warriors
+Faction 0 was attacked
+Faction 2 attacked
+Faction 0 has 44 warriors
+Faction 1 has 0 warriors
+Faction 2 has 11 warriors
+Faction 0 attacked
+Faction 2 was attacked
+Faction 0 has 44 warriors
+Faction 1 has 0 warriors
+Faction 2 has 10 warriors
+Faction 0 attacked
+Faction 2 was attacked
+Faction 0 has 44 warriors
+Faction 1 has 0 warriors
+Faction 2 has 9 warriors
+Faction 0 was attacked
+Faction 2 attacked
+Faction 0 has 43 warriors
+Faction 1 has 0 warriors
+Faction 2 has 9 warriors
+Faction 0 was attacked
+Faction 2 attacked
+Faction 0 has 42 warriors
+Faction 1 has 0 warriors
+Faction 2 has 9 warriors
+Faction 0 attacked
+Faction 2 was attacked
+Faction 0 has 42 warriors
+Faction 1 has 0 warriors
+Faction 2 has 8 warriors
+Faction 0 was attacked
+Faction 2 attacked
+Faction 0 has 41 warriors
+Faction 1 has 0 warriors
+Faction 2 has 8 warriors
+Faction 0 attacked
+Faction 2 was attacked
+Faction 0 has 41 warriors
+Faction 1 has 0 warriors
+Faction 2 has 7 warriors
+Faction 0 attacked
+Faction 2 was attacked
+Faction 0 has 41 warriors
+Faction 1 has 0 warriors
+Faction 2 has 6 warriors
+Faction 0 was attacked
+Faction 2 attacked
+Faction 0 has 40 warriors
+Faction 1 has 0 warriors
+Faction 2 has 6 warriors
+Faction 0 attacked
+Faction 2 was attacked
+Faction 0 has 40 warriors
+Faction 1 has 0 warriors
+Faction 2 has 5 warriors
+Faction 0 attacked
+Faction 2 was attacked
+Faction 0 has 40 warriors
+Faction 1 has 0 warriors
+Faction 2 has 4 warriors
+Faction 0 attacked
+Faction 2 was attacked
+Faction 0 has 40 warriors
+Faction 1 has 0 warriors
+Faction 2 has 3 warriors
+Faction 0 was attacked
+Faction 2 attacked
+Faction 0 has 39 warriors
+Faction 1 has 0 warriors
+Faction 2 has 3 warriors
+Faction 0 attacked
+Faction 2 was attacked
+Faction 0 has 39 warriors
+Faction 1 has 0 warriors
+Faction 2 has 2 warriors
+Faction 0 was attacked
+Faction 2 attacked
+Faction 0 has 38 warriors
+Faction 1 has 0 warriors
+Faction 2 has 2 warriors
+Faction 0 attacked
+Faction 2 was attacked
+Faction 0 has 38 warriors
+Faction 1 has 0 warriors
+Faction 2 has 1 warriors
+Faction 0 attacked
+Faction 2 was attacked
+Faction 0 has 38 warriors
+Faction 1 has 0 warriors
+Faction 2 has 0 warriors
+*A faction was defeated*
+Faction 2 was defeated!!!
+Faction 0 has 38 remaining warriors and is the WINNER!!!
+
+The war has ended... Peace & Love!
