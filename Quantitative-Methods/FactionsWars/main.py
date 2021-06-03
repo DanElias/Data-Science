@@ -1,7 +1,7 @@
 """
 Author: Daniel Elias
-Date: May 2021
-Stochastic Matrices and Markov Chains
+Date: June 2021
+Simulation of a battle between antagonist groups using Markov Chains and the Monte Carlo method.
 
 User can:
 1) Create his/her own N X N matrix
@@ -16,15 +16,21 @@ import math
 import pandas as pd
 import numpy as np
 import warnings
+import random
 from numpy.linalg import matrix_power
 warnings.filterwarnings('ignore')
 
-class MarkovChain:
+class WarSimulation:
     def __init__(self):
         """
         Constructor
         """
         self.matrix = []
+        self.number_of_factions = 0
+        self.factions = []
+        self.total_warriors = 0
+        self.intervals = []
+        
         self._run()
     
     def _run(self):
@@ -35,12 +41,13 @@ class MarkovChain:
         """
         close = False
         while not close:
-            print("\nDo you want to:")
+            print("\nLet's begin our war simulation... Do you want to:")
             print("a) Input your own matrix")
             print("b) Use a random 3 x 3 matrix")
             print("c) Exit the program")
             choice = input("Type the letter of your choice:")
             if choice == 'a':
+                print("Remember your matrix should be squared and the rows/cols equal the number of factions")
                 self._load_matrix()
                 print("Now checking your matrix ...")
                 self._check_matrix()
@@ -68,30 +75,48 @@ class MarkovChain:
         Displays the analysis that can be applied to the matrix
         """
         close = False
+        self._initialize_factions()
+        self._initialize_intervals()
         while not close:
             print("\n--- MENU ---")
-            print("Now you can select different operations you can do with your matrix:")
-            print("\na) Calculate the probability from going to one state to another in n steps.")
-            print("b) Calculate the long-term state (steady) of the matrix.")
-            print("c) Identify if the matrix is regular or not.")
-            print("d) Choose another matrix")
-            print("e) Exit the program")
+            print("Now we can start the war simulation!")
+            print("a) Unleash the war!")
+            print("b) Choose another matrix")
+            print("c) Exit the program")
             choice = input("Type the letter of your choice:")
             if choice == 'a':
-                self._state_transition()
-            elif choice == 'b':
-                self._steady_state()
-            elif choice == 'c':
-                self._is_regular()
-            elif choice == 'd':
+                self._war()
+                input("Press ENTER to continue")
                 close = True
-            elif choice == 'e':
+            elif choice == 'b':
+                close = True
+            elif choice == 'c':
                 close = True
                 print("\nGoodbye!")
                 exit()
             else:
                 print("Invalid option, choose an option")
                 input("Press ENTER to continue")
+
+    def _war(self):
+        while self.number_of_factions > 1:
+            attacker = random.randint(0, self.number_of_factions - 1)
+            attacked = 0
+            attacker_intervals = self.intervals[attacker]
+            random_probability = random.random()
+            for index, row in attacker_intervals.iterrows():
+                # if the probability is in the interval
+                if random_probability >= row["inferior"] and random_probability < row["superior"]:
+                    attacked = index
+                    if self.factions[attacked] > 0:
+                        self.factions[attacked] -= 1
+                        print(self.factions)
+                        if self.factions[attacked] == 0:
+                            #reconfigure the markov chain and the intervals (monte carlo)
+                            print("Reconfigure")
+                            self.number_of_factions -= 1
+            
+
     
     def _generate_random_stochastic_matrix(self):
         """
@@ -99,6 +124,66 @@ class MarkovChain:
         """
         matrix = np.random.rand(3,3)
         self.matrix = matrix / matrix.sum(axis=1)[:,None]
+
+    def _initialize_factions(self):
+        self.factions = []
+        close = False
+        while not close:
+            print("How do you want to set the number of individuals per faction?")
+            print("a) Input the numbers per faction")
+            print("b) Randomly generate the numbers per faction")
+            choice = input("Type the letter of your choice:")
+            if choice == 'a':
+                self._input_faction_numbers()
+                print("This are the number of individuals per faction:")
+                print(self.factions)
+                input("Press ENTER to continue")
+                close = True
+            elif choice == 'b':
+                self._random_faction_numbers()
+                print("This are the number of individuals per faction:")
+                print(self.factions)
+                input("Press ENTER to continue")
+                close = True
+            else:
+                print("Invalid option, choose an option")
+                input("Press ENTER to continue")
+
+    def _initialize_intervals(self):
+        self.intervals = []
+        columns = ['index','inferior','superior']
+        index = np.arange(0,self.number_of_factions)
+        for i in range(self.number_of_factions):
+            inferior = []
+            superior = []
+            aux = 0
+            for j in range(self.number_of_factions):
+                inferior.append(aux)
+                if j + 1 < self.number_of_factions:
+                    aux = aux + self.matrix[i][j]
+                    superior.append(aux)
+                else:
+                    superior.append(1)
+            new_df = pd.DataFrame(index=index, columns=columns)
+            new_df["index"] = index
+            new_df["inferior"] = inferior
+            new_df["superior"] = superior
+            self.intervals.append(new_df)
+
+    def _input_faction_numbers(self):
+        self.number_of_factions = len(self.matrix)
+        for i in range(self.number_of_factions):
+            number_per_faction = input("Input number of individuals for faction " + str((i + 1)) + ": ")
+            self.total_warriors += int(number_per_faction)
+            self.factions.append(number_per_faction)
+
+    def _random_faction_numbers(self):
+        self.number_of_factions = len(self.matrix)
+        for i in range(self.number_of_factions):
+            number_per_faction = random.randint(10, 100)
+            self.factions.append(number_per_faction)
+            self.total_warriors += number_per_faction
+            
 
     def _state_transition(self):
         """
@@ -136,125 +221,6 @@ class MarkovChain:
             print(power_matrix[origin][destiny])
         except:
             print("Something went wrong... maybe you gave an unexisting state number, remember states start at 0")
-        input("Press ENTER to continue")
-        
-    def _steady_state(self, steps = 100):
-        """
-        Calculate the long-term state (steady) of the matrix.
-        Indicates the minimum needed value for the power
-        If there is no steady state the user is notified
-        """
-        print("\n**Steady state**")
-        print("Calculating...")
-        power_matrix = self.matrix
-        i = 0
-        myfunc_vec = np.vectorize(self._round_steady)
-        power_matrix = myfunc_vec(power_matrix)
-        print(f'\nMatrix at step {i + 1} is:')
-        print(power_matrix)
-        i += 1
-        past_matrix = power_matrix
-        steady = False
-        while i < steps and not steady:
-            power_matrix = power_matrix.astype(np.float64)
-            power_matrix = np.matmul(power_matrix, self.matrix)
-
-            power_matrix = myfunc_vec(power_matrix)
-            print(f'\nMatrix at step {i + 1} is:')
-            print(power_matrix)
-
-            str_float_vect = np.vectorize(self._precise_float_str)
-            precise_current = str_float_vect(power_matrix)
-            precise_past = str_float_vect(past_matrix)
-
-            comparison = precise_current == precise_past
-            if comparison.all():
-                steady = True
-                first_row =  precise_current[0]
-                j = 1
-                while j < len(precise_current):
-                    row_comparison = first_row ==  precise_current[j]
-                    if not row_comparison.all():
-                        steady = False
-                    j += 1
-                if steady:
-                    print("\n*Attention: The matrix reached a steady state")
-                    print(f"This state was reached in step: {i + 1}")
-                    print("The steady vector is:")
-                    print(power_matrix[0])
-            past_matrix = power_matrix
-            i += 1
-        if not steady:
-            print(f"\n*Attention: The matrix never reached a steady state before {steps} steps")
-        input("Press ENTER to continue")
-    
-    def _get_negative_idxs(self, matrix):
-        """
-        Returns in a list the x,y position in the matrix of the elements that
-        are negatives/zeroes
-        """
-        n = len(matrix)
-        zeroes_idxs = list()
-        for i in range(n):
-            for j in range(n):
-                if matrix[i][j] <= 0:
-                   zeroes_idxs.append([i,j])
-        return np.array(zeroes_idxs)
-
-    def _is_regular(self, steps = 100):
-        """
-        Identifies if the matrix is regular or not by:
-        Checking if negatives/zeroes positions don't change on the next generation
-        or if the max number of steps is reached and the matrix still has
-        negatives/zeroes
-        """
-        print("\n**Is your matrix regular?**")
-        print("Calculating...")
-
-        power_matrix = self.matrix
-
-        i = 0
-        myfunc_vec = np.vectorize(self._round_steady)
-        power_matrix = myfunc_vec(power_matrix)
-
-        print(f'\nMatrix at step {i + 1} is:')
-        print(power_matrix)
-
-        i += 1
-        past_matrix = power_matrix
-        past_negative_idxs = self._get_negative_idxs(power_matrix)
-
-        while i < steps:
-            power_matrix = power_matrix.astype(np.float64)
-            power_matrix = np.matmul(power_matrix, self.matrix)
-
-            power_matrix = myfunc_vec(power_matrix)
-            print(f'\nMatrix at step {i + 1} is:')
-            print(power_matrix)
-
-            curr_negative_idxs = self._get_negative_idxs(power_matrix)
-            row_comparison = past_negative_idxs == curr_negative_idxs
-
-            if len(curr_negative_idxs) == 0:
-                print("\n*Attention: The matrix is Regular!")
-                print(f"\n*After {i + 1} steps the matrix was found to be Regular!")
-                input("Press ENTER to continue")
-                return
-            elif type(row_comparison) != bool:
-                if row_comparison.all():
-                    print("\n*Attention: The matrix is not regular")
-                    print(f"\n*After {i + 1} steps the matrix was found to be not regular")
-                    print("\n*The negative numbers/zeroes positions didn't change in the following iteration")
-                    input("Press ENTER to continue")
-                    return
-
-            past_negative_idxs = curr_negative_idxs
-            past_matrix = power_matrix
-            i += 1
-        curr_negative_idxs = self._get_negative_idxs(power_matrix)
-        if len(curr_negative_idxs) > 0:
-            print("\n*Attention: The matrix is not regular")
-            print(f"\n*After {steps} steps the matrix stil has negatives/zeroes")
         input("Press ENTER to continue")
         
     def _load_matrix(self):
@@ -348,4 +314,4 @@ class MarkovChain:
         return x
 
 # Runds the program
-mc = MarkovChain()
+mc = WarSimulation()
